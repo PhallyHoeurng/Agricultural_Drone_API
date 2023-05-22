@@ -14,6 +14,14 @@ class DroneResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'drone_type' => $this->drone_type,
+            'battery'=>$this->battery,
+            'speed' => $this->speed,
+            'start_date' =>$this->start_date,
+            'end_date'=>$this->end_date,
+        ];
     }
 }

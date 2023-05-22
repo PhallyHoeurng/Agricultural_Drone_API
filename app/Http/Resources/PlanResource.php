@@ -14,6 +14,12 @@ class PlanResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'id' =>$this->id,
+            'plan_name' =>$this-> plan_name,
+            'start_time' =>$this-> start_time,
+            'end_time' =>$this-> end_time,
+            'spray_density' =>$this-> spray_density,
+        ];
     }
 }
