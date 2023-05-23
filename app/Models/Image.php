@@ -12,6 +12,7 @@ class Image extends Model
     protected $fillable = [
         'url',
         'date',
+        'farm',
     ];
         
     public function drone()
