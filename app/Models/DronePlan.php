@@ -5,19 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Image extends Model
+class DronPlan extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
-        'url',
-        'date',
-        'farm',
+        'plan_id',
+        'drone_id',
     ];
-        
+
     public function drone()
     {
-        return $this->belongsTo(Drone::class);
+        return $this->belongsToMany(Drone::class);
     }
-
+    public function plan()
+    {
+        return $this->belongsToMany(Plan::class);
+    }
 }

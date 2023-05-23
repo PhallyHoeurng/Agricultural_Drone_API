@@ -18,13 +18,16 @@ class Drone extends Model
         'end_date',
     ];
 
-    // public function map()
-    // {
-    //     return $this->hasMany(Map::class);
-    // }
-    // public function mapImage()
-    // {
-    //     return $this->hasMany(MapImage::class);
-    // }
-    
+    public function location()
+    {
+        return $this->hasMany(Location::class);
+    }
+    public function image()
+    {
+        return $this->hasMany(Image::class);
+    }
+    public function dronePlan()
+    {
+        return $this->hasMany(DronePlan::class);
+    }
 }
