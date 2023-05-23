@@ -15,12 +15,12 @@ class Image extends Model
         'farm',
     ];
         
-    public function drone()
-    {
-        return $this->belongsTo(Drone::class);
-    }
-    public function location()
-    {
-        return $this->hasMany(Location::class);
-    }
+    // public function drone()
+    // {
+    //     return $this->belongsTo(Drone::class);
+    // }
+    // public function location()
+    // {
+    //     return $this->hasMany(Location::class);
+    // }
 }

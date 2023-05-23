@@ -11,11 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('map_images_controllers', function (Blueprint $table) {
+        Schema::create('images', function (Blueprint $table) {
             $table->id();
             $table->string('url');
             $table->date('date');
             $table->string('farm');
+
+            $table->unsignedBigInteger('drone_id');
+            $table->foreign('drone_id')->references('id')->on('drones')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
@@ -25,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('map_image_controllers');
+        Schema::dropIfExists('images');
     }
 };

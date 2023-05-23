@@ -16,6 +16,10 @@ return new class extends Migration
             $table->string('latitude');
             $table->string('longitude');
             $table->string('area');
+
+            $table->unsignedBigInteger('drone_id');
+            $table->foreign('drone_id')->references('id')->on('drones')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
