@@ -14,10 +14,11 @@ class Plan extends Model
         'start_time',
         'end_time',
         'spray_density',
+        'payload',
     ];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+    // public function user()
+    // {
+    //     return $this->belongsTo(User::class);
+    // }
 }

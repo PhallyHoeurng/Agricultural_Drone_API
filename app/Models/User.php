@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role_id',
     ];
 
     /**
@@ -43,12 +44,12 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function role()
-    {
-        return $this->hasMany(Role::class);
-    }
-    public function plan()
-    {
-        return $this->hasMany(Plan::class);
-    }
+    // public function role()
+    // {
+    //     return $this->hasMany(Role::class);
+    // }
+    // public function plan()
+    // {
+    //     return $this->hasMany(Plan::class);
+    // }
 }

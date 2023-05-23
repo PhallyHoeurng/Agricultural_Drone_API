@@ -17,6 +17,11 @@ return new class extends Migration
             $table->date('start_time');
             $table->date('end_time');
             $table->integer('spray_density');
+            $table->string('payload');
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
