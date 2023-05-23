@@ -18,7 +18,6 @@ return new class extends Migration
             $table->integer('battery');
             $table->string('speed');
             $table->date('start_date');
-            $table->date('end_date');
 
             $table->timestamps();
         });

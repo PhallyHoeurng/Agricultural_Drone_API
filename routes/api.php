@@ -25,4 +25,4 @@ Route::get('/drones', [DroneController::class, 'index']);
 Route::post('/drone', [DroneController::class, 'store']);
 Route::get('/drone/{id}', [DroneController::class, 'show']);
 Route::put('/drone/{id}', [DroneController::class, 'update']);
-Route::delete('/drone/{id}', [DroneController::class, 'destory']);
+Route::delete('/drone/{id}', [DroneController::class, 'destroy']);
