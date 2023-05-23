@@ -44,12 +44,25 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    // public function role()
-    // {
-    //     return $this->hasMany(Role::class);
-    // }
-    // public function plan()
-    // {
-    //     return $this->hasMany(Plan::class);
-    // }
+    public static function store($reques, $id = null)
+    {
+        $user= $reques->only([
+            'name',
+            'email',
+            'password',
+            'role_id',
+        ]);
+        
+        $date = self::updateOrCreate(['id'=>$id],$user);
+        return $date;
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+    public function plan()
+    {
+        return $this->hasMany(Plan::class);
+    }
 }

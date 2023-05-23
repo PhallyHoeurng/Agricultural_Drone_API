@@ -15,9 +15,9 @@ class Location extends Model
         'area',
     ];
 
-    // public function map()
-    // {
-    //     return $this->belongsTo(Map::class);
-    // }
+    public function image()
+    {
+        return $this->belongsTo(Image::class);
+    }
 
 }
