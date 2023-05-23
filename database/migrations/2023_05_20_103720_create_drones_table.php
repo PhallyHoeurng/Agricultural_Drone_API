@@ -16,8 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('drone_type');
             $table->integer('battery');
-            $table->string('payload');
-            $table->integer('speed');
+            $table->string('speed');
             $table->date('start_date');
             $table->date('end_date');
 
