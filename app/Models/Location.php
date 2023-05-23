@@ -14,4 +14,10 @@ class Location extends Model
         'longitude',
         'area',
     ];
+
+    public function map()
+    {
+        return $this->belongsTo(Map::class);
+    }
+
 }

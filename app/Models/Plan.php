@@ -10,9 +10,14 @@ class Plan extends Model
     use HasFactory;
 
     protected $fillable = [
-            'plan_name',
-            'start_time',
-            'end_time',
-            'spray_density',
+        'plan_name',
+        'start_time',
+        'end_time',
+        'spray_density',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -17,5 +17,14 @@ class Drone extends Model
         'start_date',
         'end_date',
     ];
+
+    public function map()
+    {
+        return $this->hasMany(Map::class);
+    }
+    public function mapImage()
+    {
+        return $this->hasMany(MapImage::class);
+    }
     
 }
