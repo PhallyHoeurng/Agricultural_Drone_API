@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DroneRequest;
+use App\Http\Requests\updateDroneRequest;
 use App\Http\Resources\DroneResource;
 use App\Models\Drone;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\Return_;
+use Spatie\LaravelIgnition\Http\Requests\UpdateConfigRequest;
 
 class DroneController extends Controller
 {
@@ -27,32 +29,36 @@ class DroneController extends Controller
     public function store(DroneRequest $request)
     {
         $drone = Drone::store($request);
-
         return  response()->json(['success' => true, 'data' => $drone], 200);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show($request)
+    public function show($nameDrone)
     {
-        $drone = Drone::find($request);
-        if(!$drone){
-            return response()->json(['message' => 'name drone not found'], 404);
+        $drone = Drone::where('name', $nameDrone)->first();
+        if (!$drone) {
+            return response()->json(['message' => 'name drone is not found'], 404);
         }
-
+        
         $drone = new DroneResource($drone);
         return response()->json(['success' => true, 'data' => $drone], 200);
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(DroneRequest $request, string $id)
+    public function update(UpdateDroneRequest $request, string $name)
     {
-        $drone = Drone::store($request, $id);
-
-        return  response()->json(['success' => true, 'data' => $drone], 200);
+        $drone = Drone::where('name', $name)->first();
+        if (!$drone) {
+            return response()->json(['message' => 'Drone name not found'], 404);
+        }
+    
+        $drone->update($request->validated());
+        return response()->json(['success' => true, 'data' => $drone], 200);
     }
 
     /**
@@ -62,10 +68,21 @@ class DroneController extends Controller
     {
         $drone = Drone::find($id);
         if(!$drone){
-            return response()->json(['message' => 'id drone not found'],404);
+            return response()->json(['message' => 'id drone not found'], 404);
         }
-        $drone->delete();
 
+        $drone->delete();
         return  response()->json(['success' => true, 'delete successfuly'], 200);
+    }
+
+    public function ShowCurrentLocation(Request $droneName)
+    {
+        $name = $droneName->route('name');
+        $drone = Drone::where('name', $name)->first();
+        if (!$drone) {
+            return response()->json(['message' => 'Drone not found'], 404);
+        } 
+    
+        return response()->json(['success' => true, 'data' => $drone->locations], 200);
     }
 }
