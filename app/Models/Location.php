@@ -13,11 +13,19 @@ class Location extends Model
         'latitude',
         'longitude',
         'area',
+        'drone_id',
     ];
 
-    public function image()
+    public function drone()
     {
-        return $this->belongsTo(Image::class);
+        return $this->belongsTo(Drone::class);
     }
 
+    public static function store($request, $id = null)
+    {
+        $drone = $request->only(['latitude', 'longitude', 'area', 'drone_id']);
+        $drone = self::updateOrCreate(["id" => $id], $drone);
+
+        return $drone;
+    }
 }

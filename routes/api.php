@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DroneController;
-use App\Http\Controllers\PlanController;
-use App\Http\Controllers\RoleController;
+use App\Http\Controllers\LocationController;
+use App\Models\Location;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,7 +30,7 @@ Route::get('/users/{id}', [UserController::class, 'show']);
 
 
 
-///drone 
+///drone  api routes
 Route::get('/drones', [DroneController::class, 'index']);
 Route::post('/drone', [DroneController::class, 'store']);
 Route::get('/drone/{id}', [DroneController::class, 'show']);
@@ -46,3 +46,15 @@ Route::get('/plans', [PlanController::class, 'index']);
 Route::post('/plans', [PlanController::class, 'store']);
 Route::post('/plans/{name}', [PlanController::class, 'showplan']);
 
+Route::post('/plans/{id}', [PlanController::class, 'show']);
+Route::delete('/drone/{id}', [DroneController::class, 'destroy']);
+
+// location api routes
+Route::get('/drones/{name}/location', [DroneController::class, 'ShowCurrentLocation']);
+
+// location api routes
+Route::get('/locations', [LocationController::class, 'index']);
+Route::post('/location', [LocationController::class, 'store']);
+Route::get('/location/{id}', [LocationController::class, 'show']);
+Route::put('/location/{id}', [LocationController::class, 'update']);
+Route::delete('/location/{id}', [LocationController::class, 'destroy']);
