@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PlanStoreRequest;
+use App\Http\Resources\PlanResource;
+use App\Http\Resources\PlanShowResource;
+use App\Models\Plan;
 use Illuminate\Http\Request;
 
 class PlanController extends Controller
@@ -13,14 +17,19 @@ class PlanController extends Controller
     public function index()
     {
         //
+        $plan = Plan::all();
+        $plan = PlanResource::collection($plan);
+        return response()->json(['success' => true, 'data' => $plan], 201);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PlanStoreRequest $request)
     {
         //
+        $plan = Plan::store($request);
+        return response()->json(['success' => true, 'data' => $plan], 201);
     }
 
     /**
@@ -29,6 +38,9 @@ class PlanController extends Controller
     public function show(string $id)
     {
         //
+        $plan = Plan::find($id);
+        $plan = new PlanShowResource($plan);
+        return response()->json(['success' => true, 'data' => $plan], 201);
     }
 
     /**

@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DroneController;
+use App\Http\Controllers\PlanController;
+use App\Http\Controllers\RoleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,3 +36,12 @@ Route::post('/drone', [DroneController::class, 'store']);
 Route::get('/drone/{id}', [DroneController::class, 'show']);
 Route::put('/drone/{id}', [DroneController::class, 'update']);
 Route::delete('/drone/{id}', [DroneController::class, 'destory']);
+
+// Create role
+Route::post('/roles', [RoleController::class, 'store']);
+
+
+// Create plans
+Route::get('/plans', [PlanController::class, 'index']);
+Route::post('/plans', [PlanController::class, 'store']);
+Route::post('/plans/{id}', [PlanController::class, 'show']);
