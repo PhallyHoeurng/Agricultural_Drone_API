@@ -26,6 +26,11 @@ class Drone extends Model
     {
         return $this->hasMany(Image::class);
     }
+
+    public function maps()
+    {
+        return $this->hasMany(Map::class);
+    }
     
     public static function store($request, $id = null)
     {

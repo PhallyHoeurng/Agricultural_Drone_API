@@ -23,6 +23,7 @@ class DroneResource extends JsonResource
             'start_date' =>$this->start_date,
             'location' =>$this->locations,
             'images' =>$this->images,
+            'maps' =>$this->maps,
         ];
     }
 }

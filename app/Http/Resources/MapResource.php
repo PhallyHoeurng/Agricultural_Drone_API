@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ImageResource extends JsonResource
+class MapResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,10 +16,9 @@ class ImageResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'url' => $this->url,
-            'date' => $this->date,
-            'drone_id' => $this->drone_id,
-            'farm_id' => $this->farm_id,
+            'address' => $this->address,
+            'drone_id' => $this-> drone_id,
+            'farm' =>FarmResource::collection($this->farms),
         ];
     }
 }

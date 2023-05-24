@@ -2,32 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ImageRequest;
-use App\Http\Resources\ImageResource;
+use App\Http\Requests\FarmRequest;
+use App\Http\Resources\FarmResource;
 use App\Models\Farm;
-use App\Models\Image;
 use Illuminate\Http\Request;
 
-class ImageController extends Controller
+class FarmController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $images = Image::all();
-        $images = ImageResource::collection($images);
-        return response()->json(['success' => true, 'data' => $images], 200);
+        $farms = Farm::all();
+        $farms = FarmResource::collection($farms);
+        return response()->json(['success' => true, 'data' => $farms], 200);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ImageRequest $request)
+    public function store(FarmRequest $request)
     {
-        $image = Image::store($request);
-        return  response()->json(['success' => true, 'data' => $image], 200);
+        $farm = Farm::store($request);
+        return  response()->json(['success' => true, 'data' => $farm], 200);
     }
+    
+
     /**
      * Display the specified resource.
      */
@@ -49,7 +50,6 @@ class ImageController extends Controller
      */
     public function destroy(string $id)
     {
-       
+        //
     }
 }
-

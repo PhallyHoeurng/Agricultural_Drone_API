@@ -32,12 +32,12 @@ class LocationController extends Controller
     /**
      * Display the specified resource.
      */
-        public function show($id)
+    public function show($id)
     {
         $location = Location::find($id);
         
         if(!$location){
-            response()->json(['message'=> "location not found"], 404);
+           return response()->json(['message'=> "location not found"], 404);
         }
 
         $location = new LocationResource($location);
@@ -60,8 +60,12 @@ class LocationController extends Controller
     public function destroy($id)
     {
         $location = Location::find($id);
-        $location->delete();
 
+        if(!$location){
+           return  response()->json(['message'=> "location not found"], 404);
+        }
+
+        $location->delete();
         return response()->json(['success' => true, 'message' => 'Data delete successlully!'], 200);
     }
 

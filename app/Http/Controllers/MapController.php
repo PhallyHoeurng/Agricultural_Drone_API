@@ -2,32 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ImageRequest;
-use App\Http\Resources\ImageResource;
-use App\Models\Farm;
-use App\Models\Image;
+use App\Http\Resources\MapResource;
+use App\Models\Map;
 use Illuminate\Http\Request;
 
-class ImageController extends Controller
+class MapController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $images = Image::all();
-        $images = ImageResource::collection($images);
-        return response()->json(['success' => true, 'data' => $images], 200);
+        $maps = Map::all();
+        $maps = MapResource::collection($maps);
+        return response()->json(['success' => true, 'data' => $maps],200);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ImageRequest $request)
+    public function store(Request $request)
     {
-        $image = Image::store($request);
-        return  response()->json(['success' => true, 'data' => $image], 200);
+        //
     }
+
     /**
      * Display the specified resource.
      */
@@ -49,7 +47,6 @@ class ImageController extends Controller
      */
     public function destroy(string $id)
     {
-       
+        //
     }
 }
-

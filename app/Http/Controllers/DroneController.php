@@ -20,7 +20,7 @@ class DroneController extends Controller
     {
         $drones = Drone::all();
         $drones = DroneResource::collection($drones);
-        return response()->json(['success' => true, 'data' => $drones],200);
+        return response()->json(['success' => true, 'data' => $drones], 200);
     }
 
     /**
@@ -50,14 +50,15 @@ class DroneController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateDroneRequest $request, string $name)
+    public function update(updateDroneRequest $request, string $name)
     {
         $drone = Drone::where('name', $name)->first();
         if (!$drone) {
-            return response()->json(['message' => 'Drone name not found'], 404);
+            return response()->json(['success' => false, 'message' => 'Drone name not found'], 404);
         }
     
         $drone->update($request->validated());
+    
         return response()->json(['success' => true, 'data' => $drone], 200);
     }
 
