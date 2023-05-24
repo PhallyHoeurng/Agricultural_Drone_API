@@ -21,9 +21,7 @@ class Plan extends Model
     public static function store($reques, $id = null)
     {
         $plan = $reques->only(['user_id', 'plan_name', 'start_time', 'end_time', 'spray_density', 'payload']);
-
         $plan = self::updateOrCreate(['id' => $id], $plan);
-
         return $plan;
     }
 
