@@ -35,6 +35,16 @@ Route::get('/drones', [DroneController::class, 'index']);
 Route::post('/drone', [DroneController::class, 'store']);
 Route::get('/drone/{id}', [DroneController::class, 'show']);
 Route::put('/drone/{id}', [DroneController::class, 'update']);
+Route::delete('/drone/{id}', [DroneController::class, 'destory']);
+
+// Create role
+Route::post('/roles', [RoleController::class, 'store']);
+
+
+// Create plans
+Route::get('/plans', [PlanController::class, 'index']);
+Route::post('/plans', [PlanController::class, 'store']);
+Route::post('/plans/{id}', [PlanController::class, 'show']);
 Route::delete('/drone/{id}', [DroneController::class, 'destroy']);
 
 // location api routes

@@ -12,6 +12,15 @@ class Role extends Model
     protected $fillable = [
         'name',
     ];
+    
+    public static function store($reques, $id = null)
+    {
+        $role = $reques->only(['name']);
+
+        $role = self::updateOrCreate(['id' => $id], $role);
+
+        return $role;
+    }
 
     public function user()
     {
