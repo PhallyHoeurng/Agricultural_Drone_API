@@ -45,3 +45,4 @@ Route::post('/roles', [RoleController::class, 'store']);
 Route::get('/plans', [PlanController::class, 'index']);
 Route::post('/plans', [PlanController::class, 'store']);
 Route::post('/plans/{id}', [PlanController::class, 'show']);
+Route::delete('/drone/{id}', [DroneController::class, 'destroy']);

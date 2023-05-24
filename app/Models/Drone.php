@@ -15,19 +15,21 @@ class Drone extends Model
         'battery',
         'speed',
         'start_date',
-        'end_date',
     ];
 
-    public function location()
+    // public function map()
+    // {
+    //     return $this->hasMany(Map::class);
+    // }
+    // public function mapImage()
+    // {
+    //     return $this->hasMany(MapImage::class);
+    // }
+    
+    public static function store($request, $id = null)
     {
-        return $this->hasMany(Location::class);
-    }
-    public function image()
-    {
-        return $this->hasMany(Image::class);
-    }
-    public function dronePlan()
-    {
-        return $this->hasMany(DronePlan::class);
+        $drone = $request->only(['name', 'drone_type', 'battery', 'speed', 'start_date']);
+        $drone = self::updateOrCreate(["id" => $id], $drone);
+        return $drone;
     }
 }
