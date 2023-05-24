@@ -20,7 +20,14 @@ class Plan extends Model
 
     public static function store($reques, $id = null)
     {
-        $plan = $reques->only(['user_id', 'plan_name', 'start_time', 'end_time', 'spray_density', 'payload']);
+        $plan = $reques->only([
+            'user_id', 
+            'plan_name', 
+            'start_time', 
+            'end_time', 
+            'spray_density', 
+            'payload'
+        ]);
         $plan = self::updateOrCreate(['id' => $id], $plan);
         return $plan;
     }
@@ -28,5 +35,10 @@ class Plan extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function drones()
+    {
+        return $this->belongsToMany(Drone::class, 'DronePlan') -> withTimestamps();
     }
 }

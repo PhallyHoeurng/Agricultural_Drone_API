@@ -44,5 +44,5 @@ Route::post('/roles', [RoleController::class, 'store']);
 // Create plans
 Route::get('/plans', [PlanController::class, 'index']);
 Route::post('/plans', [PlanController::class, 'store']);
-Route::post('/plans/{id}', [PlanController::class, 'show']);
-Route::delete('/drone/{id}', [DroneController::class, 'destroy']);
+Route::post('/plans/{name}', [PlanController::class, 'showplan']);
+
