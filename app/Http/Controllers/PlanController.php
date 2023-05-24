@@ -35,10 +35,10 @@ class PlanController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $name)
     {
         //
-        $plan = Plan::find($id);
+        $plan = Plan::find($name);
         $plan = new PlanShowResource($plan);
         return response()->json(['success' => true, 'data' => $plan], 201);
     }
@@ -58,4 +58,17 @@ class PlanController extends Controller
     {
         //
     }
+
+    public function showplan(string $name)
+    {
+        //
+        $plan = Plan::where('plan_name', $name)->with('drones')->first();
+        
+        if (!$plan) {
+            return response()->json(['plan not found' => $plan],404);
+        }
+        return $plan;
+    }
+
+
 }

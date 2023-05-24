@@ -21,6 +21,7 @@ class PlanShowResource extends JsonResource
             'end_time' =>$this-> end_time,
             'spray_density' =>$this-> spray_density,
             'payload' =>$this-> payload,
+            'plan_id' =>$this-> plan,
         ];
     }
 }
