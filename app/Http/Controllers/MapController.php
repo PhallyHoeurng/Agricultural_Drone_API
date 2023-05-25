@@ -70,8 +70,11 @@ class Mapcontroller extends Controller
             $query->where('id', $id);
         })->first();
 
-        if( $map == null ){
-            return response()->json(['message' => 'Address or farm not found']);
+        if($map == null){
+            return response()->json(['message' => 'Address does not exist']);
+        } 
+        else if ($id = null){
+            return response()->json(['message' => 'farm id does not exist']);
         }
             
         return response()->json(['success' => true, 'data' => $map->image_url], 200);
