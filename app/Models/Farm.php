@@ -14,12 +14,7 @@ class Farm extends Model
         'map_id',
     ];
 
-    public function images()
-    {
-        return $this->hasMany(Image::class);
-    }
-    
-    public function maps()
+    public function map()
     {
         return $this->belongsTo(Map::class);
     }

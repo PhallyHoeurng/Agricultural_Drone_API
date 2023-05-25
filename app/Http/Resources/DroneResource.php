@@ -20,9 +20,9 @@ class DroneResource extends JsonResource
             'drone_type' => $this->drone_type,
             'battery'=>$this->battery,
             'speed' => $this->speed,
+            'payload' => $this->payload ,
             'start_date' =>$this->start_date,
             'location' =>$this->locations,
-            'images' =>$this->images,
             'maps' =>$this->maps,
         ];
     }

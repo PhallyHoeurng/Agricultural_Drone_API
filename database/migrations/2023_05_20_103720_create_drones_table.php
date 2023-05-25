@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('drone_type');
             $table->integer('battery');
             $table->string('speed');
+            $table->string('payload');
             $table->date('start_date');
 
             $table->timestamps();

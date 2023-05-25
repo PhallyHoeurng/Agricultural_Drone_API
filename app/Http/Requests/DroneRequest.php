@@ -37,6 +37,7 @@ class DroneRequest extends FormRequest
             'drone_type' => 'required',
             'battery' => 'required',
             'speed' => 'required',
+            'payload' => 'required',
             'start_date' => 'required',
         ];
     }

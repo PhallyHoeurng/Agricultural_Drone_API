@@ -30,11 +30,10 @@ class UpdateDroneRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
             'drone_type' => 'required',
             'battery' => 'required',
             'speed' => 'required',
-            'start_date' => 'required',
+            'payload' => 'required',
         ];
     }
 }

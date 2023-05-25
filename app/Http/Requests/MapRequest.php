@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Exceptions\HttpResponseException;
 
 class MapRequest extends FormRequest
 {
@@ -21,15 +19,12 @@ class MapRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
      */
-    protected function failedValidation(Validator $validator)
-    {
-        throw new HttpResponseException(response()->json(['success' => false, 'message' => $validator->errors()], 412));
-    }
-
     public function rules(): array
     {
         return [
-            'farm_type' => 'required',
+            'address' => 'required',
+            'image_url' => 'required',
+            'date' => 'required',
             'drone_id' => 'required',
         ];
     }
