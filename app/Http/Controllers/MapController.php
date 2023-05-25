@@ -21,13 +21,6 @@ class Mapcontroller extends Controller
         $maps = MapImageResource::collection($maps);
         return response()->json(['success' => true, 'data' => $maps], 200);
     }
-
-    public function showall()
-    {
-        $maps = Map::all();
-        $maps = ShowMapResource::collection($maps);
-        return response()->json(['success' => true, 'data' => $maps], 200);
-    }
     /**
      * Store a newly created resource in storage.
      */
@@ -71,12 +64,33 @@ class Mapcontroller extends Controller
         })->first();
 
         if($map == null){
-            return response()->json(['message' => 'Address does not exist']);
+            return response()->json(['message' => 'Address does not exist'], 404);
         } 
         else if ($id = null){
-            return response()->json(['message' => 'farm id does not exist']);
+            return response()->json(['message' => 'farm id does not exist'], 404);
         }
             
         return response()->json(['success' => true, 'data' => $map->image_url], 200);
+    }
+
+    //delete image from farm id
+    public function deleteImageFarm($address ,$id)
+    {
+        $map = Map::where('address', $address)
+        ->whereHas('farms', function ($query) use ($id) 
+        {
+            $query->where('id', $id);
+        })->first();
+
+        if($map == null){
+            return response()->json(['message' => 'Address does not exist'], 404);
+        } 
+        else if ($id = null){
+            return response()->json(['message' => 'farm id does not exist'], 404);
+        }
+            
+        $map->image_url = null;
+        $map->save();
+        return response()->json(['success'=>true , 'delete image successfully'], 200);
     }
 }

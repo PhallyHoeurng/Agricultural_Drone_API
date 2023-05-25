@@ -61,16 +61,10 @@ Route::delete('/location/{id}', [LocationController::class, 'destroy']);
 
 // mape api routes
 Route::get('/maps', [MapController::class, 'index']);
-Route::get('/showall', [MapController::class, 'showall']);
 Route::post('/map', [MapController::class, 'store']);
 Route::get('/maps/{address}/{id}', [MapController::class, 'show']);
-Route::delete('/maps/{address}/{id}', [MapController::class, 'destroy']);
-
-//downloadImageFarm
-Route::get('/download_maps/{address}/{id}', [MapController::class, 'downdLoadImageFarm']);
-// Route::get('/download_maps/{address}', [MapController::class, 'downdLoadImageFarm']);
-
-
+Route::get('/downloadImageFarm/{address}/{id}', [MapController::class, 'downdLoadImageFarm']);
+Route::delete('/deleteImageFarm/{address}/{id}', [MapController::class, 'deleteImageFarm']);
 
 // farm api routes
 Route::get('/farms', [FarmController::class, 'index']);
