@@ -89,8 +89,11 @@ class Mapcontroller extends Controller
             return response()->json(['message' => 'farm id does not exist'], 404);
         }
             
-        $map->image_url = null;
-        $map->save();
+
+        if($map->image_url = null){
+            $map->save();
+        }
+        
         return response()->json(['success'=>true , 'delete image successfully'], 200);
     }
 }
