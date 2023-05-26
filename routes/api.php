@@ -35,7 +35,6 @@ Route::get('/users/{id}', [UserController::class, 'show']);
 // Create role
 Route::post('/roles', [RoleController::class, 'store']);
 
-
 // Create plans
 Route::get('/plans', [PlanController::class, 'index']);
 Route::post('/plans', [PlanController::class, 'store']);
