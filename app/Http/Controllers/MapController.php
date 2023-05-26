@@ -26,6 +26,7 @@ class Mapcontroller extends Controller
      */
     public function store(MapRequest $request)
     {
+        dd(456);
         $map = Map::store($request);
         return  response()->json(['success' => true, 'data' => $map], 200);
     }

@@ -41,7 +41,6 @@ Route::post('/plans', [PlanController::class, 'store']);
 Route::post('/plans/{name}', [PlanController::class, 'showplan']);
 
 Route::post('/plans/{id}', [PlanController::class, 'show']);
-Route::delete('/drone/{id}', [DroneController::class, 'destroy']);
 
 ///drone  api routes
 Route::get('/drones', [DroneController::class, 'index']);
@@ -49,7 +48,7 @@ Route::post('/drone', [DroneController::class, 'store']);
 Route::get('/drone/{name}', [DroneController::class,'show']);
 Route::get('/drone/{name}/location', [DroneController::class, 'ShowCurrentLocation']);
 Route::put('/drone/{name}', [DroneController::class, 'update']);
-Route::delete('/drone/{id}', [DroneController::class, 'destory']);
+Route::delete('/drone/{id}', [DroneController::class, 'destroy']);
 
 // location api routes
 Route::get('/locations', [LocationController::class, 'index']);
@@ -60,8 +59,7 @@ Route::delete('/location/{id}', [LocationController::class, 'destroy']);
 
 // mape api routes
 Route::get('/maps', [MapController::class, 'index']);
-Route::post('/map', [MapController::class, 'store']);
-Route::get('/maps/{address}/{id}', [MapController::class, 'show']);
+Route::post('/maps/{address}/{id}', [MapController::class, 'store']);
 Route::get('/downloadImageFarm/{address}/{id}', [MapController::class, 'downdLoadImageFarm']);
 Route::delete('/deleteImageFarm/{address}/{id}', [MapController::class, 'deleteImageFarm']);
 
