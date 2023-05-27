@@ -27,22 +27,22 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Create on user api
+//--------- User API ---------//
 Route::get('/users', [UserController::class, 'index']);
 Route::post('/users', [UserController::class, 'store']);
 Route::get('/users/{id}', [UserController::class, 'show']);
 
-// Create role
+//--------- Role API ---------//
 Route::post('/roles', [RoleController::class, 'store']);
 
-// Create plans
+//--------- Plan API ---------//
 Route::get('/plans', [PlanController::class, 'index']);
 Route::post('/plans', [PlanController::class, 'store']);
 Route::post('/plans/{name}', [PlanController::class, 'showplan']);
 
 Route::post('/plans/{id}', [PlanController::class, 'show']);
 
-///drone  api routes
+//--------- Drone API ---------//
 Route::get('/drones', [DroneController::class, 'index']);
 Route::post('/drone', [DroneController::class, 'store']);
 Route::get('/drone/{name}', [DroneController::class,'show']);
@@ -50,21 +50,21 @@ Route::get('/drone/{name}/location', [DroneController::class, 'ShowCurrentLocati
 Route::put('/drone/{name}', [DroneController::class, 'update']);
 Route::delete('/drone/{id}', [DroneController::class, 'destroy']);
 
-// location api routes
+//--------- Location API ---------//
 Route::get('/locations', [LocationController::class, 'index']);
 Route::post('/location', [LocationController::class, 'store']);
 Route::get('/location/{id}', [LocationController::class, 'show']);
 Route::put('/location/{id}', [LocationController::class, 'update']);
 Route::delete('/location/{id}', [LocationController::class, 'destroy']);
 
-// mape api routes
+//--------- Map API ---------//
 Route::get('/maps', [MapController::class, 'index']);
 Route::post('/map', [MapController::class, 'store']);
 Route::post('/maps/{address}/{id}', [MapController::class, 'addMapImage']);
 Route::get('/downloadImageFarm/{address}/{id}', [MapController::class, 'downdLoadImageFarm']);
 Route::delete('/deleteImageFarm/{address}/{id}', [MapController::class, 'deleteImageFarm']);
 
-// farm api routes
+//--------- Farm API ---------//
 Route::get('/farms', [FarmController::class, 'index']);
 Route::post('/farm', [FarmController::class, 'store']);
 
