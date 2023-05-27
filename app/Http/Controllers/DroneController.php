@@ -56,7 +56,6 @@ class DroneController extends Controller
         }
     
         $drone->update($request->validated());
-    
         return response()->json(['success' => true, 'data' => $drone], 200);
     }
 

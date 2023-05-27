@@ -14,17 +14,13 @@ class Drone extends Model
         'drone_type',
         'battery',
         'speed',
+        'payload',
         'start_date',
     ];
 
     public function locations()
     {
         return $this->hasMany(Location::class);
-    }
-
-    public function images()
-    {
-        return $this->hasMany(Image::class);
     }
 
     public function maps()
@@ -38,7 +34,7 @@ class Drone extends Model
     
     public static function store($request, $id = null)
     {
-        $drone = $request->only(['name', 'drone_type', 'battery', 'speed', 'start_date']);
+        $drone = $request->only(['name', 'drone_type', 'battery', 'speed', 'payload', 'start_date']);
         $drone = self::updateOrCreate(["id" => $id], $drone);
         
         $dronplan =  request('plans');

@@ -8,26 +8,29 @@ use Illuminate\Database\Eloquent\Model;
 class Map extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'address',
+        'image_url',
+        'date',
         'drone_id',
     ];
 
-    public function farms()
-    {
-        return $this->hasMany(Farm::class);
-    }
-    
     public function drone()
     {
         return $this->belongsTo(Drone::class);
     }
+    public function farms()
+    {
+        return $this->hasMany(Farm::class);
+    }
 
     public static function store($request, $id = null)
     {
-        $drone = $request->only(['adress', 'drone_id']);
-        $drone = self::updateOrCreate(["id" => $id], $drone);
+        $farm = $request->only(['address', 'image_url', 'date', 'drone_id']);
+        $farm = self::updateOrCreate(["id" => $id], $farm);
 
-        return $drone;
+        return $farm;
     }
+
 }
