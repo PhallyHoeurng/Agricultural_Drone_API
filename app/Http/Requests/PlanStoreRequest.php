@@ -30,7 +30,6 @@ class PlanStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
             'plan_name'=>'required',
             'start_time'=>'required',
             'end_time'=>'required',

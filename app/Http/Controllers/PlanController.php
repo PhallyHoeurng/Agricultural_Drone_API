@@ -16,7 +16,6 @@ class PlanController extends Controller
      */
     public function index()
     {
-        //
         $plan = Plan::all();
         $plan = PlanResource::collection($plan);
         return response()->json(['success' => true, 'data' => $plan], 201);
@@ -27,7 +26,6 @@ class PlanController extends Controller
      */
     public function store(PlanStoreRequest $request)
     {
-        //
         $plan = Plan::store($request);
         return response()->json(['success' => true, 'data' => $plan], 201);
     }
@@ -37,31 +35,13 @@ class PlanController extends Controller
      */
     public function show(string $name)
     {
-        //
         $plan = Plan::find($name);
         $plan = new PlanShowResource($plan);
         return response()->json(['success' => true, 'data' => $plan], 201);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
-
     public function showplan(string $name)
     {
-        //
         $plan = Plan::where('plan_name', $name)->with('drones')->first();
         
         if (!$plan) {
@@ -69,6 +49,4 @@ class PlanController extends Controller
         }
         return $plan;
     }
-
-
 }

@@ -35,7 +35,6 @@ class LocationController extends Controller
     public function show($id)
     {
         $location = Location::find($id);
-        
         if(!$location){
            return response()->json(['message'=> "location not found"], 404);
         }
@@ -49,7 +48,6 @@ class LocationController extends Controller
      */
     public function update(LocationRequest $request, $id)
     {
-
         $location = Location::store($request, $id);
         return response()->json(['success' => true, 'data' => $location], 200);
     }
@@ -60,7 +58,6 @@ class LocationController extends Controller
     public function destroy($id)
     {
         $location = Location::find($id);
-
         if(!$location){
            return  response()->json(['message'=> "location not found"], 404);
         }

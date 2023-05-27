@@ -59,7 +59,8 @@ Route::delete('/location/{id}', [LocationController::class, 'destroy']);
 
 // mape api routes
 Route::get('/maps', [MapController::class, 'index']);
-Route::post('/maps/{address}/{id}', [MapController::class, 'store']);
+Route::post('/map', [MapController::class, 'store']);
+Route::post('/maps/{address}/{id}', [MapController::class, 'addMapImage']);
 Route::get('/downloadImageFarm/{address}/{id}', [MapController::class, 'downdLoadImageFarm']);
 Route::delete('/deleteImageFarm/{address}/{id}', [MapController::class, 'deleteImageFarm']);
 
