@@ -51,10 +51,10 @@ class UserStoreRequest extends FormRequest
                 'max:10',
                 Rule::unique('users')->ignore($this->id),        
             ],
-            'role_id'=>[
-                'required',
-                Rule::unique('users')->ignore($this->id),        
-            ],
+            // 'role_id'=>[
+            //     'required',
+            //     Rule::unique('users')->ignore($this->id),        
+            // ],
         ];
     }
 }

@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DroneController;
 use App\Http\Controllers\FarmController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\MapController;
+use App\Http\Controllers\PlanController;
 use App\Models\Image;
 use App\Models\Location;
 use Illuminate\Http\Request;
@@ -32,15 +34,24 @@ Route::post('/users', [UserController::class, 'store']);
 Route::get('/users/{id}', [UserController::class, 'show']);
 
 // Create role
-Route::post('/roles', [RoleController::class, 'store']);
+// Route::post('/roles', [RoleController::class, 'store']);
 
+
+// Create login
+
+// Create logout
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::post('/plans', [PlanController::class, 'store']);
+    Route::post('/logout', [AuthenticationController::class, 'logout']);
+});
+
+Route::post('/login', [AuthenticationController::class, 'login']);
 
 // Create plans
 Route::get('/plans', [PlanController::class, 'index']);
-Route::post('/plans', [PlanController::class, 'store']);
-Route::post('/plans/{name}', [PlanController::class, 'showplan']);
+Route::get('/plans/{name}', [PlanController::class, 'show']);
 
-Route::post('/plans/{id}', [PlanController::class, 'show']);
+// Route::post('/plans/{id}', [PlanController::class, 'show']);
 Route::delete('/drone/{id}', [DroneController::class, 'destroy']);
 
 ///drone  api routes

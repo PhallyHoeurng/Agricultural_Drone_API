@@ -50,17 +50,13 @@ class User extends Authenticatable
             'name',
             'email',
             'password',
-            'role_id',
+            // 'role_id',
         ]);
         
         $date = self::updateOrCreate(['id'=>$id],$user);
         return $date;
     }
 
-    public function role()
-    {
-        return $this->belongsTo(Role::class);
-    }
     public function plan()
     {
         return $this->hasMany(Plan::class);

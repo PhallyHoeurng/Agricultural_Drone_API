@@ -8,8 +8,6 @@ use App\Http\Requests\updateDroneRequest;
 use App\Http\Resources\DroneResource;
 use App\Models\Drone;
 use Illuminate\Http\Request;
-use PhpParser\Node\Stmt\Return_;
-use Spatie\LaravelIgnition\Http\Requests\UpdateConfigRequest;
 
 class DroneController extends Controller
 {
@@ -51,6 +49,19 @@ class DroneController extends Controller
      * Update the specified resource in storage.
      */
     public function update(updateDroneRequest $request, string $name)
+    {
+        $drone = Drone::where('name', $name)->first();
+        if (!$drone) {
+            return response()->json(['success' => false, 'message' => 'Drone name not found'], 404);
+        }
+    
+        $drone->update($request->validated());
+    
+        return response()->json(['success' => true, 'data' => $drone], 200);
+    }
+
+    
+    public function updateByName(updateDroneRequest $request, string $name)
     {
         $drone = Drone::where('name', $name)->first();
         if (!$drone) {

@@ -19,7 +19,6 @@ class UserShowResource extends JsonResource
             'name' =>$this-> name,
             'email' =>$this-> email,
             'password' =>$this-> password,
-            'role_id' =>$this-> role -> id,
             'plan' =>$this-> plan,
         ];
     }

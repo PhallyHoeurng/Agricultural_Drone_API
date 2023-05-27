@@ -31,17 +31,20 @@ class Drone extends Model
     {
         return $this->hasMany(Map::class);
     }
+    public function plans()
+    {
+        return $this->belongsToMany(Plan::class, 'drone_plans') -> withTimestamps();
+    }
     
     public static function store($request, $id = null)
     {
         $drone = $request->only(['name', 'drone_type', 'battery', 'speed', 'start_date']);
         $drone = self::updateOrCreate(["id" => $id], $drone);
-
+        
+        $dronplan =  request('plans');
+        $drone->plans()->sync($dronplan);
         return $drone;
     }
 
-    public function drones()
-    {
-        return $this->belongsToMany(Plan::class, 'DronePlan') -> withTimestamps();
-    }
+
 }
