@@ -49,6 +49,9 @@ class LocationController extends Controller
     public function update(LocationRequest $request, $id)
     {
         $location = Location::store($request, $id);
+        if(!$location){
+            return response()->json(['message' => 'id not found'], 404);
+        }
         return response()->json(['success' => true, 'data' => $location], 200);
     }
 
