@@ -32,7 +32,7 @@ class Mapcontroller extends Controller
     }
 
     // download image from farm id 
-    public function downdLoadImageFarm($address ,$id)
+    public function downdLoadImageFarm($address, $id)
     {
         $map = Map::where('address', $address)
         ->whereHas('farms', function ($query) use ($id) 
@@ -51,7 +51,7 @@ class Mapcontroller extends Controller
     }
 
     //delete image from farm id
-    public function deleteImageFarm($address ,$id)
+    public function deleteImageFarm($address, $id)
     {
         $map = Map::where('address', $address)
         ->whereHas('farms', function ($query) use ($id) 
@@ -67,5 +67,26 @@ class Mapcontroller extends Controller
         $map->save();
 
         return response()->json(['success'=>true , 'delete image successfully'], 200);
+    }
+
+    ///add new maping image 
+    public function addMapImage(Request $request, $address, $farmId)
+    {
+        $map = Map::where('address', $address)
+            ->whereHas('farms', function ($query) use ($farmId) {
+                $query->where('id', $farmId);
+            })->with(['farms' => function ($query) use ($farmId) {
+                $query->where('id', $farmId);
+            }])
+            ->first();
+
+        if (!$map) {
+            return response()->json(['message' => 'address or id of farm are not exist'], 404);
+        }
+
+        $map->image_url = $request->input('image_url');
+        $map->save();
+
+        return response()->json(['message' => 'add image successfully', 'data' => $map], 200);
     }
 }
