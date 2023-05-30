@@ -35,6 +35,7 @@ class UpdateDroneByNameRequest extends FormRequest
             'battery' => 'required',
             'speed' => 'required',
             'start_date' => 'required',
+            'plans' => 'required',
         ];
     }
 }
