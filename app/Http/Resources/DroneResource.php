@@ -24,7 +24,7 @@ class DroneResource extends JsonResource
             'start_date' =>$this->start_date,
             'location' =>$this->locations,
             'maps' =>$this->maps,
-            "plans"=> PlanResource::collection($this->plans),
+            "plans"=>$this->plans
         ];
     }
 }

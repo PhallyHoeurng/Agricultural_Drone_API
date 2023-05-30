@@ -32,8 +32,6 @@ Route::get('/users', [UserController::class, 'index']);
 Route::post('/users', [UserController::class, 'store']);
 Route::get('/users/{id}', [UserController::class, 'show']);
 
-\
-
 // Create logout
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/plans', [PlanController::class, 'store']);
@@ -42,11 +40,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 Route::post('/login', [AuthenticationController::class, 'login']);
 
-
 //--------- Plan API ---------//
 Route::get('/plans', [PlanController::class, 'index']);
 Route::get('/plans/{name}', [PlanController::class, 'show']);
-
 
 // Route::post('/plans/{id}', [PlanController::class, 'show']);
 Route::delete('/drone/{id}', [DroneController::class, 'destroy']);
